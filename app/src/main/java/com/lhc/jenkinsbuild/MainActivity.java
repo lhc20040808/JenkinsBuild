@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_test = (TextView) findViewById(R.id.tv_test);
-        tv_test.setText(BuildConfig.MARKET_URL);
+//        tv_test.setText(BuildConfig.MARKET_URL);
     }
 }
