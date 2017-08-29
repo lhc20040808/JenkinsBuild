@@ -15,6 +15,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "MARKER_URL", MARKER_URL
+        }
+
+        debug {
+            buildConfigField "String", "MARKER_URL", MARKER_URL
         }
     }
 }
@@ -28,3 +33,4 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
+
