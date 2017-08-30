@@ -17,14 +17,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            buildConfigField "String", "MARKET_URL", MARKET_URL
+            buildConfigField "String", "MARKET_URL", MARKET_URL
             buildConfigField "String", "TEST", "\"test\""
         }
 
         debug {
-//            buildConfigField "String", "MARKET_URL", MARKET_URL
+            buildConfigField "String", "MARKET_URL", MARKET_URL
             buildConfigField "String", "TEST", "\"test\""
         }
+    }
+
+    lintOptions {
+        abortOnError false//lint时候终止错误上报,防止编译的时候莫名的失败
     }
 }
 
