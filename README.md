@@ -118,5 +118,5 @@ MARKET_URL = ""
 
 
 
-参考链接：[enkins+Gradle+Git+Centos 实现android持续集成、打包（超详细）](http://www.jianshu.com/p/5feca12a2ada)
+参考链接：[Jenkins+Gradle+Git+Centos 实现android持续集成、打包（超详细）](http://www.jianshu.com/p/5feca12a2ada)
 
