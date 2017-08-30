@@ -12,23 +12,52 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+
+        release {
+            storeFile
+            storePassword
+            keyAlias
+            keyPassword
+        }
+
+
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "MARKET_URL", MARKET_URL
-            buildConfigField "String", "TEST", "\"test\""
+            signingConfig signingConfigs.release
         }
 
         debug {
             buildConfigField "String", "MARKET_URL", MARKET_URL
-            buildConfigField "String", "TEST", "\"test\""
+            signingConfig signingConfigs.release
         }
     }
 
     lintOptions {
         abortOnError false//lint时候终止错误上报,防止编译的时候莫名的失败
+    }
+
+    //配置打包签名
+    File propFile = file('signing.properties');
+    if (propFile.exists()) {
+        def Properties props = new Properties()
+        props.load(new FileInputStream(propFile))
+        if (props.containsKey('storeFileName') && props.containsKey('storePassword') &&
+                props.containsKey('keyAlias') && props.containsKey('keyPassword')) {
+            android.signingConfigs.release.storeFile = file(props['storeFileName'])
+            android.signingConfigs.release.storePassword = props['keyPassword']
+            android.signingConfigs.release.keyAlias = props['keyAlias']
+            android.signingConfigs.release.keyPassword = props['keyPassword']
+        } else {
+            android.buildTypes.release.signingConfig = null
+        }
+    } else {
+        android.buildTypes.release.signingConfig = null
     }
 }
 
