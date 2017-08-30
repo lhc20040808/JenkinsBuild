@@ -43,7 +43,7 @@ android {
     }
 
     //配置打包签名
-    File propFile = file('signing.properties');
+    File propFile = file('../signing.properties');
     if (propFile.exists()) {
         def Properties props = new Properties()
         props.load(new FileInputStream(propFile))
